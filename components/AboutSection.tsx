@@ -25,7 +25,7 @@ const AboutSection: React.FC = () => {
           <div className="max-w-5xl mx-auto">
             <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[3rem] overflow-hidden mb-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] group">
               <img
-                src="public/images/au.jpeg"
+                src="images/au.jpeg"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 alt="Founders"
                 referrerPolicy="no-referrer"

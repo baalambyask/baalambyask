@@ -32,7 +32,7 @@ const HeroPortals: React.FC<HeroPortalsProps> = ({ onNavigate }) => {
         
         <div className="relative z-10 flex flex-col items-center gap-8">
           <div className="w-48 h-48 md:w-64 md:h-64 bg-white rounded-3xl flex items-center justify-center p-6 shadow-2xl shadow-orange-500/30 transition-all duration-500 group-hover:scale-105">
-            <img src="public/images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
+            <img src="images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-5xl md:text-8xl font-bold text-white heading-serif tracking-tighter">ASK <br></br>ACADEMY</h2>
@@ -60,7 +60,7 @@ const HeroPortals: React.FC<HeroPortalsProps> = ({ onNavigate }) => {
 
         <div className="relative z-10 flex flex-col items-center gap-8">
           <div className="w-48 h-48 md:w-64 md:h-64 bg-white rounded-3xl flex items-center justify-center p-6 shadow-2xl shadow-blue-500/30 transition-all duration-500 group-hover:scale-105">
-            <img src="public/images/baalam.jpeg" alt="BAALAM" className="w-full h-full object-contain" />
+            <img src="images/baalam.jpeg" alt="BAALAM" className="w-full h-full object-contain" />
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-5xl md:text-8xl font-bold text-white heading-serif tracking-tighter">BAALAM<br></br>PLAY SCHOOL</h2>

@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
           onClick={() => handleLinkClick('home')}
         >
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-1 shadow-2xl shadow-orange-500/20 transition-transform group-hover:scale-105">
-            <img src="public/images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
+            <img src="images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white heading-serif leading-none tracking-tight">
