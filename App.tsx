@@ -1,41 +1,80 @@
 
 
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import HeroPortals from './components/HeroPortals';
-import AboutSection from './components/AboutSection';
-import TeachersSection from './components/TeachersSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import ContactSection from './components/ContactSection';
-import BallamPage from './components/BallamPage';
 import AskPage from './components/AskPage';
+import BallamPage from './components/BallamPage';
+import AboutSection from './components/AboutSection';
+import JobsSection from './components/JobsSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import ResultsSection from './components/ResultsSection';
+import TeachersSection from './components/TeachersSection';
+import FaqSection from './components/FaqSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import BrochureSection from './components/BrochureSection';
+import AiAdvisor from './components/AiAdvisor';
 
-const Home = () => (
-  <>
-    <HeroPortals />
-    <AboutSection />
-    <TeachersSection />
-    <TestimonialsSection />
-    <ContactSection />
-  </>
-);
+const App: React.FC = () => {
+  const [currentPath, setCurrentPath] = useState<string>('home');
 
-const App: React.FC = () => (
-  <div className="min-h-screen relative text-slate-950 selection:bg-orange-600/10 font-sans">
-    <BrowserRouter>
-      <Navbar />
+  const handleNavigate = (path: string) => {
+    if (path === 'home') {
+      setCurrentPath('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    if (path === 'ask' || path === 'ballam') {
+      setCurrentPath(path);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else {
+      setCurrentPath('home');
+      setTimeout(() => {
+        const el = document.getElementById(path);
+        if (el) {
+          const navHeight = 96; // Height of the navbar
+          const target = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
+  const renderContent = () => {
+    switch (currentPath) {
+      case 'ask':
+        return <AskPage onBack={() => handleNavigate('home')} />;
+      case 'ballam':
+        return <BallamPage onBack={() => handleNavigate('home')} />;
+      default:
+        return (
+          <>
+            <HeroPortals onNavigate={handleNavigate} />
+            <AboutSection />
+            {/* <ResultsSection /> */}
+            {/* <BrochureSection /> */}
+            <TeachersSection />
+            <TestimonialsSection />
+            {/* <FaqSection /> */}
+            {/* <AiAdvisor /> */}
+            {/* <JobsSection /> */}
+            <ContactSection />
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="min-h-screen relative text-slate-950 selection:bg-orange-600/10 font-sans">
+      <Navbar onNavigate={handleNavigate} currentPath={currentPath} />
       <main className="relative z-10">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/baalam" element={<BallamPage onBack={() => window.history.back()} />} />
-          <Route path="/ask" element={<AskPage onBack={() => window.history.back()} />} />
-        </Routes>
+        {renderContent()}
       </main>
       <Footer />
-    </BrowserRouter>
-  </div>
-);
+    </div>
+  );
+};
 
 export default App;

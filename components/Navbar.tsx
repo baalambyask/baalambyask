@@ -3,20 +3,27 @@
 import React, { useState } from 'react';
 import { NAV_LINKS } from '../constants';
 import { Menu, X, ExternalLink } from 'lucide-react';
-import { useNavigate, useLocation, NavLink as RouterNavLink } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (path: string) => void;
+  currentPath: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ENROLL_LINK = "https://forms.gle/C6t5knPJiaoqwKXA7";
-  const navigate = useNavigate();
-  const location = useLocation();
+
+  const handleLinkClick = (href: string) => {
+    onNavigate(href);
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
         <div 
           className="flex items-center gap-4 cursor-pointer group"
-          onClick={() => navigate('/')}
+          onClick={() => handleLinkClick('home')}
         >
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-1 shadow-2xl shadow-orange-500/20 transition-transform group-hover:scale-105">
             <img src="public/images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
@@ -32,12 +39,20 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden lg:flex items-center gap-10">
-          <RouterNavLink to="/" end className={({ isActive }) => `text-xs font-bold uppercase tracking-widest transition-all relative py-2 ${isActive ? 'text-orange-500' : 'text-slate-400 hover:text-white'}`}>HOME</RouterNavLink>
-          <a href="#about" className="text-xs font-bold uppercase tracking-widest transition-all relative py-2 text-slate-400 hover:text-white">ABOUT US</a>
-          <a href="#teachers" className="text-xs font-bold uppercase tracking-widest transition-all relative py-2 text-slate-400 hover:text-white">OUR FACULTY</a>
-          <a href="#contact" className="text-xs font-bold uppercase tracking-widest transition-all relative py-2 text-slate-400 hover:text-white">CONTACT</a>
-          <RouterNavLink to="/ask" className={({ isActive }) => `text-xs font-bold uppercase tracking-widest transition-all relative py-2 ${isActive ? 'text-orange-500' : 'text-slate-400 hover:text-white'}`}>ASK ACADEMY</RouterNavLink>
-          <RouterNavLink to="/baalam" className={({ isActive }) => `text-xs font-bold uppercase tracking-widest transition-all relative py-2 ${isActive ? 'text-blue-500' : 'text-slate-400 hover:text-white'}`}>BAALAM PRESCHOOL</RouterNavLink>
+          {NAV_LINKS.map((link) => (
+            <button 
+              key={link.label} 
+              onClick={() => handleLinkClick(link.href)}
+              className={`text-xs font-bold uppercase tracking-widest transition-all relative py-2 ${
+                currentPath === link.href ? 'text-orange-500' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {link.label.toUpperCase()}
+              {currentPath === link.href && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 rounded-full" />
+              )}
+            </button>
+          ))}
           <a 
             href={ENROLL_LINK}
             target="_blank"
@@ -58,12 +73,17 @@ const Navbar: React.FC = () => {
 
       {isMenuOpen && (
         <div className="lg:hidden bg-slate-950 border-b border-white/10 px-6 py-12 flex flex-col gap-8 shadow-2xl">
-          <RouterNavLink to="/" end className={({ isActive }) => `text-xl font-bold uppercase tracking-widest text-left ${isActive ? 'text-orange-500' : 'text-white'}`}>HOME</RouterNavLink>
-          <a href="#about" className="text-xl font-bold uppercase tracking-widest text-left text-white">ABOUT US</a>
-          <a href="#teachers" className="text-xl font-bold uppercase tracking-widest text-left text-white">OUR FACULTY</a>
-          <a href="#contact" className="text-xl font-bold uppercase tracking-widest text-left text-white">CONTACT</a>
-          <RouterNavLink to="/ask" className={({ isActive }) => `text-xl font-bold uppercase tracking-widest text-left ${isActive ? 'text-orange-500' : 'text-white'}`}>ASK ACADEMY</RouterNavLink>
-          <RouterNavLink to="/baalam" className={({ isActive }) => `text-xl font-bold uppercase tracking-widest text-left ${isActive ? 'text-blue-500' : 'text-white'}`}>BAALAM PRESCHOOL</RouterNavLink>
+          {NAV_LINKS.map((link) => (
+            <button 
+              key={link.label} 
+              onClick={() => handleLinkClick(link.href)}
+              className={`text-xl font-bold uppercase tracking-widest text-left ${
+                currentPath === link.href ? 'text-orange-500' : 'text-white'
+              }`}
+            >
+              {link.label.toUpperCase()}
+            </button>
+          ))}
           <a 
             href={ENROLL_LINK}
             target="_blank"
