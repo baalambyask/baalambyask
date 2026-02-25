@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --ask-orange: #f97316;
+  --ask-orange-dark: #ea580c;
+  --baalam-blue: #2563eb;
+  --baalam-blue-dark: #1d4ed8;
+  --paper: #fdfdfb;
+  --ink: #0a0a0a;
+  --line: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .heading-serif {
+  font-family: 'Crimson Pro', serif;
+  letter-spacing: -0.02em;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.btn-human {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+}
+
+.split-pane {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.academic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.human-card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 3rem;
+  border-radius: 2.5rem;
+  transition: all 0.4s ease;
+}
+
+.human-card:hover {
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.05);
+}
+
+.textured-bg {
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
