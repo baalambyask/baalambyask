@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroPortals from './components/HeroPortals';
 import AskPage from './components/AskPage';
@@ -15,64 +16,85 @@ import TestimonialsSection from './components/TestimonialsSection';
 import BrochureSection from './components/BrochureSection';
 import AiAdvisor from './components/AiAdvisor';
 
-const App: React.FC = () => {
-  const [currentPath, setCurrentPath] = useState<string>('home');
+const HomePage: React.FC = () => {
+  return (
+    <>
+      <HeroPortals />
+      <AboutSection />
+      {/* <ResultsSection /> */}
+      {/* <BrochureSection /> */}
+      <TeachersSection />
+      <TestimonialsSection />
+      {/* <FaqSection /> */}
+      {/* <AiAdvisor /> */}
+      {/* <JobsSection /> */}
+      <ContactSection />
+    </>
+  );
+};
 
-  const handleNavigate = (path: string) => {
-    if (path === 'home') {
-      setCurrentPath('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    
-    if (path === 'ask' || path === 'ballam') {
-      setCurrentPath(path);
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    } else {
-      setCurrentPath('home');
+const AppContent: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigateToSection = (sectionId: string) => {
+    // If not on home, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete before scrolling
       setTimeout(() => {
-        const el = document.getElementById(path);
-        if (el) {
-          const navHeight = 96; // Height of the navbar
-          const target = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
-          window.scrollTo({ top: target, behavior: 'smooth' });
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 96; // navbar height
+          window.scrollTo({
+            top: element.offsetTop - offset,
+            behavior: 'smooth'
+          });
         }
       }, 100);
+    } else {
+      // Already on home, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 96; // navbar height
+        window.scrollTo({
+          top: element.offsetTop - offset,
+          behavior: 'smooth'
+        });
+      }
     }
-  };
+  };    
 
-  const renderContent = () => {
-    switch (currentPath) {
-      case 'ask':
-        return <AskPage onBack={() => handleNavigate('home')} />;
-      case 'ballam':
-        return <BallamPage onBack={() => handleNavigate('home')} />;
-      default:
-        return (
-          <>
-            <HeroPortals onNavigate={handleNavigate} />
-            <AboutSection />
-            {/* <ResultsSection /> */}
-            {/* <BrochureSection /> */}
-            <TeachersSection />
-            <TestimonialsSection />
-            {/* <FaqSection /> */}
-            {/* <AiAdvisor /> */}
-            {/* <JobsSection /> */}
-            <ContactSection />
-          </>
-        );
-    }
+  // make sure every route change starts at top of page
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  const handleBack = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen relative text-slate-950 selection:bg-orange-600/10 font-sans">
-      <Navbar onNavigate={handleNavigate} currentPath={currentPath} />
+      <Navbar onNavigateToSection={handleNavigateToSection} />
       <main className="relative z-10">
-        {renderContent()}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/ask" element={<AskPage onBack={handleBack} />} />
+          <Route path="/ballam" element={<BallamPage onBack={handleBack} />} />
+        </Routes>
       </main>
-      <Footer />
+      <Footer onNavigateToSection={handleNavigateToSection} />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 };
 

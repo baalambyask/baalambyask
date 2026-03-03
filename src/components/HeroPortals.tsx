@@ -1,13 +1,11 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, GraduationCap, School } from 'lucide-react';
 
-interface HeroPortalsProps {
-  onNavigate: (path: string) => void;
-}
-
-const HeroPortals: React.FC<HeroPortalsProps> = ({ onNavigate }) => {
+const HeroPortals: React.FC = () => {
   const [hovered, setHovered] = useState<'ask' | 'baalam' | null>(null);
+  const navigate = useNavigate();
 
   const ENROLL_LINK = "https://forms.gle/C6t5knPJiaoqwKXA7";
 
@@ -18,7 +16,7 @@ const HeroPortals: React.FC<HeroPortalsProps> = ({ onNavigate }) => {
         className={`relative flex-1 flex flex-col items-center justify-center transition-all duration-500 ease-out cursor-pointer group overflow-hidden `}
         onMouseEnter={() => setHovered('ask')}
         onMouseLeave={() => setHovered(null)}
-        onClick={() => onNavigate('ask')}
+        onClick={() => navigate('/ask')}
       >
         <div className="absolute inset-0 z-0">
           <img 
@@ -46,7 +44,7 @@ const HeroPortals: React.FC<HeroPortalsProps> = ({ onNavigate }) => {
         className={`relative flex-1 flex flex-col items-center justify-center transition-all duration-500 ease-out cursor-pointer group overflow-hidden border-t md:border-t-0 md:border-l border-white/10`}
         onMouseEnter={() => setHovered('baalam')}
         onMouseLeave={() => setHovered(null)}
-        onClick={() => onNavigate('ballam')}
+        onClick={() => navigate('/ballam')}
       >
         <div className="absolute inset-0 z-0">
           <img 

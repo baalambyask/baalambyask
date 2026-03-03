@@ -1,148 +1,253 @@
-
 import React from 'react';
-import { ChevronLeft, CheckCircle2, Rocket, Zap, Star, Calendar, BookOpen, Target, ExternalLink } from 'lucide-react';
+import { 
+  ChevronLeft,
+  Award,
+  ShieldCheck, 
+  Users, 
+  TrendingUp,
+  Flame,
+  Target,
+  Lightbulb,
+  CheckCircle2,
+  Rocket,
+  Zap
+} from 'lucide-react';
 
-const AskPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const AskPage = ({ onBack }) => {
   const ENROLL_LINK = "https://forms.gle/C6t5knPJiaoqwKXA7";
-  const phases = [
+
+  const learningPhases = [
     {
       name: "SOUMYAA",
       subtitle: "Launch Phase",
-      grade: "Class VI & VII",
-      icon: <Rocket className="text-blue-600" size={32} />,
-      description: "Focuses on building interest and strengthening fundamentals to improve confidence and academic inclination.",
-      points: [
-        "Improve Attention & Focus",
-        "Build Interest & Academic Inclination",
-        "Strengthen Fundamentals",
-        "Improve Confidence & Motivation"
-      ],
-      color: "border-blue-100 bg-white"
+      grade: "Classes VI & VII",
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-400",
+      description: "Foundation Building & Interest Development",
+      focus: "Improve Attention & Focus, Strengthen Fundamentals, Build Confidence",
+      highlights: ["Interest Building", "Attention Focus", "Fundamentals Strong", "Confidence Boost"]
     },
     {
       name: "SAADHANA",
-      subtitle: "2nd Important Phase",
-      grade: "Class VIII & IX",
-      icon: <Zap className="text-purple-600" size={32} />,
-      description: "Integrates IIT Foundation with school syllabus at a steady pace to develop self-discipline.",
-      points: [
-        "IIT Foundation Integration",
-        "School Syllabus with Steady Pace",
-        "Develop Self-discipline",
-        "SMART Goal Setting"
-      ],
-      color: "border-purple-100 bg-white"
+      subtitle: "Acceleration Phase",
+      grade: "Classes VIII & IX",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-400",
+      description: "IIT Foundation Integration & Discipline Building",
+      focus: "IIT Foundation, Steady Pace, Self-Discipline, SMART Goals",
+      highlights: ["IIT Foundation", "Self-Discipline", "Goal Setting", "Pace Control"]
     },
     {
       name: "SARVAGJNA",
-      subtitle: "Crucial Phase",
+      subtitle: "Excellence Phase",
       grade: "Class X",
-      icon: <Star className="text-orange-600" size={32} />,
-      description: "Comprehensive coverage and concept mastery to excel in board exams and prepare for intermediate level.",
-      points: [
-        "Master Fundamental Concepts",
-        "Comprehensive Syllabus Coverage",
-        "Excel in Board Examinations",
-        "Intermediate Level Readiness"
-      ],
-      color: "border-orange-100 bg-white"
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-400",
+      description: "Board Mastery & Advanced Preparation",
+      focus: "Concept Mastery, Board Coverage, Advanced Level, Intermediate Ready",
+      highlights: ["Concept Master", "Board Coverage", "Advanced Level", "Intermediate Ready"]
     }
   ];
 
+  const whyAsk = [
+    { icon: <Target size={28} />, title: "Results-Driven Approach", description: "Structured curriculum focused on measurable student outcomes" },
+    { icon: <Users size={28} />, title: "Expert Faculty", description: "Certified educators with 15+ years in higher secondary education" },
+    { icon: <TrendingUp size={28} />, title: "Progress Tracking", description: "Real-time monitoring with monthly reports and parent meetings" },
+    { icon: <Flame size={28} />, title: "HOTS Development", description: "Higher Order Thinking Skills through application-based learning" },
+    { icon: <Award size={28} />, title: "Track Record", description: "18+ years of excellence in board examination results" },
+    { icon: <ShieldCheck size={28} />, title: "Safe Learning", description: "Disciplined environment with structured daily routines" }
+  ];
+
+  const features = [
+    { icon: <Rocket size={28} />, title: "Rigorous Curriculum", description: "Aligned with SSC, CBSE & ICSE boards with advanced concepts" },
+    { icon: <Zap size={28} />, title: "Interactive Sessions", description: "Problem-solving through classroom discussions and activities" },
+    { icon: <CheckCircle2 size={28} />, title: "Regular Tests", description: "Weekly tests to assess progress and identify weak areas" },
+    { icon: <Lightbulb size={28} />, title: "Doubt Solving", description: "One-on-one sessions for conceptual clarity" },
+    { icon: <Users size={28} />, title: "Small Batches", description: "Personalized attention with low teacher-to-student ratio" },
+    { icon: <Award size={28} />, title: "Certified Curriculum", description: "Recognized and approved by educational boards" }
+  ];
+
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-white">
-      <div className="section-container">
-        <button 
-          onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-slate-900 mb-12 font-bold text-xs uppercase tracking-widest transition-all"
-        >
-          <ChevronLeft size={16} /> Back to Home
-        </button>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-24">
-          <div className="lg:col-span-2">
-            <span className="text-orange-600 text-sm font-bold uppercase tracking-widest mb-4 block">Secondary Education Division</span>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 heading-serif">
-              ASK Academy
-            </h1>
-            <p className="text-xl text-slate-600 leading-relaxed mb-10 font-medium">
-              Building higher order thinking skills (HOTS) at the high-school level since 2007. We provide a rigorous academic environment for Classes VII to X across SSC, CBSE, and ICSE boards.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mb-10">
-              <div className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-100 rounded-full">
-                <Target className="text-orange-600" size={20} />
-                <span className="text-sm font-bold text-slate-700">Results Driven</span>
-              </div>
-              <div className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-100 rounded-full">
-                <BookOpen className="text-orange-600" size={20} />
-                <span className="text-sm font-bold text-slate-700">HOTS Focused</span>
-              </div>
-            </div>
-
-            <a 
-              href={ENROLL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20"
-            >
-              Enroll for 2026-27 <ExternalLink size={18} />
-            </a>
-          </div>
-
-          <div className="bg-orange-50 p-10 rounded-[2rem] border border-orange-100 lg:sticky lg:top-32">
-            <div className="flex items-center gap-3 mb-8 text-orange-700 font-bold uppercase tracking-widest text-xs">
-              <Calendar size={18} /> Academic Calendar
-            </div>
-            <div className="space-y-8">
-              <div>
-                <p className="text-xs text-orange-600/60 font-bold uppercase tracking-wider mb-2">Commencement</p>
-                <p className="text-2xl font-bold text-slate-900 heading-serif">27th March '26</p>
-              </div>
-              <div className="space-y-4">
-                <p className="text-xs text-orange-600/60 font-bold uppercase tracking-wider mb-2">Summer Schedule</p>
-                <div className="space-y-2">
-                  <p className="text-slate-700 font-bold flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-orange-400 rounded-full" />
-                    Till 16th May '26
-                  </p>
-                  <p className="text-slate-700 font-bold flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-orange-400 rounded-full" />
-                    Reopens 1st June '26
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {phases.map((phase) => (
-            <div key={phase.name} className="human-card group">
-              <div className="mb-8 flex justify-between items-start">
-                <div>
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{phase.grade}</p>
-                  <h3 className="text-3xl font-bold text-slate-900 heading-serif">{phase.name}</h3>
-                </div>
-                <div className="p-3 bg-slate-50 rounded-xl transition-transform duration-500">
-                  {phase.icon}
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm mb-8 leading-relaxed font-medium">
-                {phase.description}
-              </p>
-              <ul className="space-y-4">
-                {phase.points.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-orange-600 mt-0.5 shrink-0" />
-                    <span className="text-sm font-bold text-slate-700 leading-snug">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <div className="min-h-screen bg-white font-sans text-slate-800 overflow-x-hidden pt-24">
+      {/* TOP ANNOUNCEMENT */}
+      <div className="sticky top-0 z-40 bg-gradient-to-r from-orange-600 to-orange-700 text-white py-3 px-6 flex justify-between items-center">
+        <div className="text-sm font-semibold">🎓 Admissions Open for 2026-27</div>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-bold text-xs rounded-full">
+          Limited Seats Available
         </div>
       </div>
+
+      <main>
+        {/* HERO SECTION */}
+        <section className="relative pt-20 pb-20 px-6 overflow-hidden">
+          <div className="max-w-6xl mx-auto">
+            {/* Back Button */}
+            <button 
+              onClick={onBack}
+              className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-800 transition-colors font-bold text-sm mb-8"
+            >
+              <ChevronLeft size={18} /> Back to Home
+            </button>
+
+            {/* Logo & Header */}
+            <div className="flex justify-between items-start">
+              <div>
+                <h1 className="text-6xl md:text-7xl font-black text-orange-600 leading-tight mb-4">
+                  ASK<span className="text-orange-700"> Academy</span>
+                </h1>
+                <p className="text-lg text-slate-600 font-medium max-w-2xl">
+                  Building higher order thinking skills for Classes VI-X. Structured academic excellence since 2007.
+                </p>
+              </div>
+              <div className="hidden lg:block text-right">
+                <div className="inline-flex flex-col items-center gap-2 px-6 py-4 bg-orange-50 border-2 border-orange-600 rounded-2xl">
+                  <span className="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Admissions Open</span>
+                  <span className="text-2xl font-black text-blue-700">27.03.2026</span>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 my-10">
+              <a 
+                href={ENROLL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-transform shadow-lg text-sm uppercase tracking-widest"
+              >
+                Apply Now
+              </a>
+              <a 
+                href="tel:8977224488"
+                className="px-8 py-4 border-3 border-orange-600 text-orange-600 font-black rounded-2xl hover:bg-orange-50 transition-colors text-sm uppercase tracking-widest"
+              >
+                Call Us
+              </a>
+            </div>
+
+            {/* Key Stats Banner */}
+            <div className="grid grid-cols-3 gap-4 bg-orange-50 rounded-3xl p-8">
+              <div className="text-center">
+                <div className="text-3xl font-black text-orange-600 mb-2">18+</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Years Experience</p>
+              </div>
+              <div className="text-center border-l border-r border-orange-600/20">
+                <div className="text-3xl font-black text-orange-600 mb-2">500+</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Alumni Success</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-black text-orange-600 mb-2">3</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Structured Phases</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* LEARNING PHASES SECTION */}
+        <section className="py-20 px-6 bg-orange-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-orange-600 mb-4">Our Learning Framework</h2>
+              <p className="text-slate-600 font-medium">Three structured phases designed for comprehensive development</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {learningPhases.map((phase, idx) => (
+                <div 
+                  key={idx}
+                  className={`${phase.bgColor} border-4 ${phase.borderColor} rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group`}
+                >
+                  <div className="relative z-10">
+                    {/* Grade & Subtitle */}
+                    <div className="mb-6">
+                      <p className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-2">{phase.grade}</p>
+                      <h3 className="text-4xl font-black text-orange-600 mb-2">{phase.name}</h3>
+                      <p className="text-xs font-bold text-blue-700 uppercase tracking-widest">{phase.subtitle}</p>
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-lg font-bold text-slate-700 mb-3">{phase.description}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6">{phase.focus}</p>
+                    
+                    {/* Highlights */}
+                    <div className="space-y-3 pt-4 border-t border-orange-600/20">
+                      {phase.highlights.map((highlight, i) => (
+                        <div key={i} className="flex items-center gap-2 text-orange-600 text-sm font-bold">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full" />
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY ASK SECTION */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-orange-600 mb-4">Why Choose ASK?</h2>
+              <p className="text-slate-600 font-medium">Proven excellence in secondary education for nearly two decades</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {whyAsk.map((item, idx) => (
+                <div key={idx} className="p-8 border-2 border-orange-100 rounded-2xl hover:border-blue-600 hover:shadow-lg transition-all group">
+                  <div className="text-orange-600 mb-4 group-hover:text-blue-700 transition-colors">{item.icon}</div>
+                  <h3 className="text-xl font-black text-orange-600 mb-3">{item.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES SECTION */}
+        <section className="py-20 px-6 bg-orange-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-orange-600 mb-4">Learning Features</h2>
+              <p className="text-slate-600 font-medium">Comprehensive approach to student success</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {features.map((feature, idx) => (
+                <div key={idx} className="p-8 bg-white border-2 border-orange-100 rounded-2xl hover:border-blue-600 hover:shadow-lg transition-all group">
+                  <div className="text-blue-600 mb-4 group-hover:scale-110 transition-transform">{feature.icon}</div>
+                  <h3 className="text-xl font-black text-orange-600 mb-3">{feature.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto bg-orange-50 rounded-3xl p-12 text-center border-4 border-orange-600">
+            <h2 className="text-4xl font-black text-orange-600 mb-4">Ready to Excel in Your Academics?</h2>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed font-medium">
+              Join ASK Academy and develop the critical thinking skills needed for board success and beyond.
+            </p>
+            <div className="flex flex-col gap-4">
+              <a 
+                href={ENROLL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-5 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-transform shadow-xl text-lg uppercase tracking-widest"
+              >
+                Apply Now - Limited Seats
+              </a>
+              <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">
+                📍 Vidyanagar, Hyderabad | 📞 +91 92465 43851
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

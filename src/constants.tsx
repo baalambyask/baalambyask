@@ -7,7 +7,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Our Faculty', href: '#teachers' },
   { label: 'Contact', href: '#contact' },
   { label: 'ASK Academy', href: '/ask' },
-  { label: 'Baalam Preschool', href: '/baalam' }
+  { label: 'Baalam Preschool', href: '/ballam' }
 ];
 
 export const PROGRAMS: Program[] = [

@@ -1,106 +1,479 @@
+import React, { useState } from 'react';
+import {
+  ChevronLeft,
+  Award,
+  ShieldCheck,
+  Users,
+  Tv,
+  Wind,
+  Camera,
+  Heart,
+  Music,
+  CheckCircle2,
+  Play,
+  Zap,
+  X
+} from 'lucide-react';
 
-import React from 'react';
-import { ChevronLeft, Users, Sparkles, Heart, Quote, BookCheck, ShieldCheck, Smile, ExternalLink } from 'lucide-react';
-
-const BallamPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const BallamPage = ({ onBack }) => {
   const ENROLL_LINK = "https://forms.gle/C6t5knPJiaoqwKXA7";
-  const programs = [
-    { name: "Playgroup", age: "2 to 3 yrs", desc: "Focus on social interaction and sensory exploration." },
-    { name: "Nursery", age: "3 to 4 yrs", desc: "Developing language skills and creative expression." },
-    { name: "Pre-Primary", age: "4 to 6 yrs", desc: "Foundational literacy, numeracy, and school readiness." }
+  const [selectedLevel, setSelectedLevel] = useState(null);
+
+  const schoolLevels = [
+    {
+      name: "Playgroup",
+      age: "2-3 Years",
+      color: "from-pink-300 to-rose-200",
+      borderColor: "border-rose-400",
+      bgColor: "bg-rose-50",
+      icon: "🎨",
+      description: "Social & Sensory Development",
+      focus: "Play-based exploration and bonding"
+    },
+    {
+      name: "Nursery",
+      age: "3-4 Years",
+      color: "from-amber-300 to-orange-200",
+      borderColor: "border-orange-400",
+      bgColor: "bg-orange-50",
+      icon: "🎭",
+      description: "Language & Creative Skills",
+      focus: "Phonics and self-expression"
+    },
+    {
+      name: "Pre-Primary 1",
+      age: "4-5 Years",
+      color: "from-sky-300 to-blue-200",
+      borderColor: "border-blue-400",
+      bgColor: "bg-blue-50",
+      icon: "🔬",
+      description: "Cognitive & Math Foundation",
+      focus: "Logical thinking and problem-solving"
+    },
+    {
+      name: "Pre-Primary 2",
+      age: "5-6 Years",
+      color: "from-emerald-300 to-green-200",
+      borderColor: "border-green-400",
+      bgColor: "bg-green-50",
+      icon: "🎓",
+      description: "School Readiness",
+      focus: "Advanced literacy and discipline"
+    }
+  ];
+
+  const approaches = [
+    { icon: <Play size={28} />, title: "Play-Based Learning", description: "Every concept taught through games and activities" },
+    { icon: <CheckCircle2 size={28} />, title: "NEP 2020 Aligned", description: "Follows National Education Policy framework" },
+    { icon: <Music size={28} />, title: "Holistic Development", description: "Balance of academics, arts, and physical education" },
+    { icon: <Heart size={28} />, title: "Screen-Free Zone", description: "100% no TV, tablets, or screens in classrooms" },
+    { icon: <Users size={28} />, title: "12:1 Student Ratio", description: "Every child gets personalized attention daily" },
+    { icon: <Zap size={28} />, title: "Expert Teachers", description: "Certified in child psychology & early childhood education" }
+  ];
+
+  const whyChoose = [
+    { icon: <Camera size={28} />, title: "CCTV Transparency", description: "Real-time monitoring. Parents can access live feeds." },
+    { icon: <ShieldCheck size={28} />, title: "Safety Protocols", description: "Medical-grade sanitization and hygiene standards." },
+    { icon: <Wind size={28} />, title: "Clean Environment", description: "Air purifiers and mosquito mesh in all rooms." },
+    { icon: <Award size={28} />, title: "Proven Track Record", description: "18 years of trusted education in Vidyanagar." },
+    { icon: <Heart size={28} />, title: "Parent Involvement", description: "Weekly progress reports and parent-teacher meetings." },
+    { icon: <CheckCircle2 size={28} />, title: "Certified Curriculum", description: "Montessori & International Best Practices." }
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-white">
-      <div className="section-container">
-        <button 
-          onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-slate-900 mb-12 font-bold text-xs uppercase tracking-widest transition-colors duration-300"
-        >
-          <ChevronLeft size={16} /> Back to Home
-        </button>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-24">
-          <div className="space-y-10">
-            <div>
-              <span className="text-blue-600 text-sm font-bold uppercase tracking-widest mb-4 block">Preschool Division</span>
-              <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 heading-serif">
-                BAALAM Academy
-              </h1>
-              <p className="text-2xl text-blue-900 font-bold italic mb-8 heading-serif">
-                ‘Pratibalam Prati BAALAM’ — Nurturing inner strength.
-              </p>
-              <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                The foundational division of the ASK Educational Society, focused on early childhood excellence through a blend of Montessori and play-way pedagogy.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex items-center gap-4 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
-                <ShieldCheck className="text-blue-700" size={28} />
-                <span className="text-sm font-bold text-slate-700">Safe Environment</span>
-              </div>
-              <div className="flex items-center gap-4 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
-                <Smile className="text-blue-700" size={28} />
-                <span className="text-sm font-bold text-slate-700">Holistic Care</span>
-              </div>
-            </div>
-
-            <a 
-              href={ENROLL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-slate-800 transition-colors duration-300 shadow-xl shadow-slate-900/20"
-            >
-              Enroll for 2026-27 <ExternalLink size={18} />
-            </a>
-          </div>
-          
-          <div className="relative">
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-              <img 
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1200" 
-                className="w-full h-full object-cover" 
-                alt="Academic Environment" 
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 max-w-[240px]">
-              <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-2">Founders' Provision</p>
-              <p className="text-slate-900 font-bold text-lg leading-tight heading-serif">5% institutional discount for the first 15 enrollments.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {programs.map((g) => (
-            <div key={g.name} className="human-card">
-              <h4 className="text-2xl font-bold text-slate-900 mb-3 heading-serif">{g.name}</h4>
-              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-6">{g.age}</p>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">{g.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-slate-900 heading-serif mb-16">Advisory Council</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {[
-              { author: "Dr. Santa Deepthi Kuppa", title: "Institutional Advisor", quote: "Small changes create the greatest transformations in early development." },
-              { author: "Dr. B. Ganesh Kumar", title: "Vice President", quote: "We prioritize self-regulation and physical discipline alongside cognitive growth." }
-            ].map((voice, idx) => (
-              <div key={idx} className="bg-slate-50 p-12 rounded-[2rem] border border-slate-100 text-left relative">
-                <Quote size={40} className="text-blue-100 absolute top-8 right-8" />
-                <p className="text-xl text-slate-700 leading-relaxed font-medium mb-8 italic heading-serif">"{voice.quote}"</p>
-                <div>
-                  <p className="font-bold text-slate-900 text-lg">{voice.author}</p>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">{voice.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="min-h-screen bg-white font-sans text-slate-800 overflow-x-hidden pt-24">
+      {/* TOP ANNOUNCEMENT */}
+      <div className="sticky top-0 z-40 bg-gradient-to-r from-[#0056b3] to-[#0080d4] text-white py-3 px-6 flex justify-between items-center">
+        <div className="text-sm font-semibold">🎓 Admissions Open for 2026-27</div>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff9500] text-white font-bold text-xs rounded-full">
+          Limited Seats Available
         </div>
       </div>
+
+      <main>
+        {/* HERO SECTION */}
+        <section className="relative pt-20 pb-20 px-6 overflow-hidden">
+          <div className="max-w-6xl mx-auto">
+            {/* Back Button */}
+            <button
+              onClick={onBack}
+              className="inline-flex items-center gap-2 text-[#0056b3] hover:text-[#003d85] transition-colors font-bold text-sm mb-8"
+            >
+              <ChevronLeft size={18} /> Back to Home
+            </button>
+
+            {/* Logo & Header */}
+            <div className="flex justify-between items-start">
+              <div>
+                <h1 className="text-6xl md:text-7xl font-black text-[#0056b3] leading-tight mb-4">
+                  Prati<span className="text-[#0080d4]">Baalam</span>
+                </h1>
+                <p className="text-lg text-slate-600 font-medium max-w-2xl">
+                  Premium preschool education with play-based learning, safety, and holistic development.
+                </p>
+              </div>
+              <div className="hidden lg:block text-right">
+                <div className="inline-flex flex-col items-center gap-2 px-6 py-4 bg-[#e1f5fe] border-2 border-[#0056b3] rounded-2xl">
+                  <span className="text-[10px] font-bold text-[#0056b3] uppercase tracking-widest">Admissions Open</span>
+                  <span className="text-2xl font-black text-[#ff9500]">04.03.2026</span>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Buttons - moved below the header for spacing */}
+            <div className="flex flex-wrap gap-4 my-10">
+              <a
+                href={ENROLL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#ff9500] text-white font-black rounded-2xl hover:scale-105 transition-transform shadow-lg text-sm uppercase tracking-widest"
+              >
+                Apply Now
+              </a>
+              <a
+                href="tel:8977224488"
+                className="px-8 py-4 border-3 border-[#0056b3] text-[#0056b3] font-black rounded-2xl hover:bg-[#e1f5fe] transition-colors text-sm uppercase tracking-widest"
+              >
+                Call Us
+              </a>
+            </div>
+
+            {/* Key Stats Banner */}
+            <div className="grid grid-cols-3 gap-4 bg-[#e1f5fe] rounded-3xl p-8">
+              <div className="text-center">
+                <div className="text-3xl font-black text-[#0056b3] mb-2">12:1</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Student Ratio</p>
+              </div>
+              <div className="text-center border-l border-r border-[#0056b3]/20">
+                <div className="text-3xl font-black text-[#0056b3] mb-2">18</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Years Trust</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-black text-[#0056b3] mb-2">0%</div>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Screen Time</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PUZZLE INFOGRAPHIC - 2x2 Grid */}
+        <section className="py-20 px-6 bg-[#e1f5fe]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-[#0056b3] mb-4">Our Learning Levels</h2>
+              <p className="text-slate-600 font-medium">Each stage is carefully designed for your child's growth</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {schoolLevels.map((level, idx) => (
+                <div
+                  key={idx}
+                  className={`${level.bgColor} border-4 ${level.borderColor} rounded-3xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group`}
+                >
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${level.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
+
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="text-6xl mb-6">{level.icon}</div>
+
+                    {/* Title & Age */}
+                    <h3 className="text-3xl font-black text-[#0056b3] mb-2">{level.name}</h3>
+                    <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">{level.age}</p>
+
+                    {/* Description */}
+                    <p className="text-lg font-bold text-slate-700 mb-3">{level.description}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">{level.focus}</p>
+
+                    {/* Bottom Accent */}
+                    <div className="mt-6 flex items-center gap-2 text-[#0056b3] font-bold text-sm">
+                      <CheckCircle2 size={16} /> Perfect for this age
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TWO-COLUMN FEATURES */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
+              {/* What's Our Approach? */}
+              <div>
+                <h3 className="text-3xl font-black text-[#0056b3] mb-12">What's Our Approach?</h3>
+                <div className="space-y-8">
+                  {approaches.map((item, idx) => (
+                    <div key={idx} className="flex gap-6">
+                      <div className="w-16 h-16 flex-shrink-0 bg-[#e1f5fe] border-3 border-[#0056b3] rounded-2xl flex items-center justify-center text-[#0056b3]">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-black text-slate-900 mb-2">{item.title}</h4>
+                        <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Why PratiBaalam? */}
+              <div>
+                <h3 className="text-3xl font-black text-[#0056b3] mb-12">Why PratiBaalam?</h3>
+                <div className="space-y-8">
+                  {whyChoose.map((item, idx) => (
+                    <div key={idx} className="flex gap-6">
+                      <div className="w-16 h-16 flex-shrink-0 bg-[#ffcc00]/20 border-3 border-[#ffcc00] rounded-2xl flex items-center justify-center text-[#0056b3]">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-black text-slate-900 mb-2">{item.title}</h4>
+                        <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SAFETY & NEP SECTION */}
+        <section className="py-20 px-6 bg-gradient-to-r from-[#0056b3] to-[#0080d4] text-white">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight">Safety & Standards.</h2>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <Camera size={32} className="flex-shrink-0 text-[#ffcc00]" />
+                  <div>
+                    <p className="font-bold text-lg mb-1">Live CCTV Access</p>
+                    <p className="text-blue-100 text-sm">Monitor your child anytime via our secure parent portal</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <Wind size={32} className="flex-shrink-0 text-[#ffcc00]" />
+                  <div>
+                    <p className="font-bold text-lg mb-1">Medical-Grade Hygiene</p>
+                    <p className="text-blue-100 text-sm">Air purifiers, sanitization, and mosquito mesh throughout</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <CheckCircle2 size={32} className="flex-shrink-0 text-[#ffcc00]" />
+                  <div>
+                    <p className="font-bold text-lg mb-1">NEP 2020 Compliant</p>
+                    <p className="text-blue-100 text-sm">Curriculum aligned with National Education Policy</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-10 text-center">
+              <Award size={64} className="mx-auto text-[#ffcc00] mb-6" />
+              <h4 className="text-2xl font-black mb-4">Certified Quality</h4>
+              <p className="text-blue-100 text-sm leading-relaxed mb-8">
+                Our curriculum combines Montessori principles with modern educational research, ensuring your child thrives socially, emotionally, and academically.
+              </p>
+              <button className="w-full bg-[#ffcc00] text-[#0056b3] py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">
+                Learn Our Method
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* INTERACTIVE PUZZLE SECTION */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-[#0056b3] mb-4">Our Learning Programs</h2>
+              <p className="text-slate-600 font-medium">Click on each section to explore what we offer for your child</p>
+            </div>
+
+            {/* Interactive Puzzle Image Container */}
+            <div className="relative w-full">
+              {/* Puzzle Image */}
+              <img
+                src="images/puzzle.png"
+                alt="Learning Levels Puzzle"
+                className="w-full h-auto object-cover"
+              />
+
+              {/* Invisible Clickable Zones - Positioned absolutely over the image */}
+              {/* Playgroup - Top Left (25% of width, 50% of height) */}
+              <div
+                onClick={() => setSelectedLevel(0)}
+                className="absolute top-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Playgroup details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Nursery - Top Right */}
+              <div
+                onClick={() => setSelectedLevel(1)}
+                className="absolute top-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Nursery details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Pre-Primary 1 - Bottom Left */}
+              <div
+                onClick={() => setSelectedLevel(2)}
+                className="absolute bottom-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Pre-Primary 1 details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Pre-Primary 2 - Bottom Right */}
+              <div
+                onClick={() => setSelectedLevel(3)}
+                className="absolute bottom-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Pre-Primary 2 details"
+                style={{ pointerEvents: 'auto' }}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* MODAL POPUP */}
+        {selectedLevel !== null && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+            <div className="relative bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto shadow-2xl">
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedLevel(null)}
+                className="absolute top-6 right-6 z-10 w-12 h-12 bg-[#0056b3] text-white rounded-full flex items-center justify-center hover:bg-[#003d85] transition-colors shadow-lg"
+              >
+                <X size={24} />
+              </button>
+
+              {/* Modal Content */}
+              <div className={`p-10 md:p-12 ${schoolLevels[selectedLevel].bgColor}`}>
+                {/* Header */}
+                <div className="mb-8">
+                  <div className="text-6xl mb-4">{schoolLevels[selectedLevel].icon}</div>
+                  <h2 className="text-5xl font-black text-[#0056b3] mb-2">{schoolLevels[selectedLevel].name}</h2>
+                  <p className="text-xl font-bold text-slate-600 uppercase tracking-widest">{schoolLevels[selectedLevel].age}</p>
+                </div>
+
+                {/* Main Description */}
+                <div className="space-y-6 border-t border-[#0056b3]/20 pt-8">
+                  <div>
+                    <h3 className="text-2xl font-black text-[#0056b3] mb-3">What We Focus On</h3>
+                    <p className="text-lg text-slate-700 leading-relaxed mb-4">{schoolLevels[selectedLevel].description}</p>
+                    <p className="text-base text-slate-600 leading-relaxed">{schoolLevels[selectedLevel].focus}</p>
+                  </div>
+
+                  {/* Key Features */}
+                  <div>
+                    <h3 className="text-2xl font-black text-[#0056b3] mb-4">Key Benefits</h3>
+                    <ul className="space-y-3">
+                      {selectedLevel === 0 && (
+                        <>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Sensory exploration with educational toys and materials</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Social bonding through group activities</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Foundation for language and motor skills</span>
+                          </li>
+                        </>
+                      )}
+                      {selectedLevel === 1 && (
+                        <>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Phonics and early reading skills</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Creative expression through art and music</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Personal and social development</span>
+                          </li>
+                        </>
+                      )}
+                      {selectedLevel === 2 && (
+                        <>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Mathematics fundamentals and logic</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Problem-solving through engaging activities</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Scientific curiosity and exploration</span>
+                          </li>
+                        </>
+                      )}
+                      {selectedLevel === 3 && (
+                        <>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">School-level reading and writing skills</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Structured learning and discipline</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-[#0056b3] mt-1 flex-shrink-0" />
+                            <span className="text-slate-700 font-bold">Confidence building for school transition</span>
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="pt-6 border-t border-[#0056b3]/20">
+                    <a
+                      href={ENROLL_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full py-4 bg-[#0056b3] text-white font-black rounded-2xl text-center uppercase tracking-widest hover:bg-[#003d85] transition-all shadow-lg"
+                    >
+                      Enroll Your Child
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CTA SECTION */}
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto bg-[#e1f5fe] rounded-3xl p-12 text-center border-4 border-[#0056b3]">
+            <h2 className="text-4xl font-black text-[#0056b3] mb-4">Ready to Transform Your Child's Early Years?</h2>
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+              Join PratiBaalam and give your child the gift of play-based, science-backed education in a safe, nurturing environment.
+            </p>
+            <div className="flex flex-col gap-4">
+              <a
+                href={ENROLL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-5 bg-[#ff9500] text-white font-black rounded-2xl hover:scale-105 transition-transform shadow-xl text-lg uppercase tracking-widest"
+              >
+                Apply Now - Limited Seats
+              </a>
+              <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">
+                📍 Vidyanagar, Hyderabad | 📞 8977224488
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

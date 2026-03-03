@@ -1,10 +1,28 @@
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Facebook, Youtube, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToSection?: (sectionId: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigateToSection }) => {
+  const navigate = useNavigate();
+
+  const handleNavClick = (path: string, sectionId?: string) => {
+    if (sectionId && onNavigateToSection) {
+      onNavigateToSection(sectionId);
+    } else if (path === '/ask') {
+      navigate('/ask');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else if (path === '/ballam') {
+      navigate('/ballam');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  };
+
   return (
-    <footer className="bg-slate-950 text-slate-400 py-24 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-slate-950 text-slate-400 py-16 border-t border-white/5 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -17,11 +35,11 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
-          <div className="space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-2">
+          <div className="space-y-13">
             <div className="flex items-center gap-6">
               <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center p-2 shadow-2xl shadow-white/5">
-                <img src="https://storage.googleapis.com/test-api-416107.appspot.com/aistudio/input_file_1.png" alt="ASK" className="w-full h-full object-contain" />
+                <img src="images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-white heading-serif leading-none tracking-tight">ASK & BAALAM</span>
@@ -31,7 +49,7 @@ const Footer: React.FC = () => {
             <p className="text-lg leading-relaxed font-medium text-slate-500">
               Nurturing inner strength and academic excellence since 2007. Dedicated to foundational and high-school success through structured pedagogical frameworks.
             </p>
-            <div className="flex gap-6">
+            <div className="flex gap-4">
               <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group shadow-2xl"><Facebook size={20} className="text-slate-400 group-hover:text-white transition-colors" /></a>
               <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all group shadow-2xl"><Youtube size={20} className="text-slate-400 group-hover:text-white transition-colors" /></a>
               <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 transition-all group shadow-2xl"><Instagram size={20} className="text-slate-400 group-hover:text-white transition-colors" /></a>
@@ -41,19 +59,17 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-10 uppercase tracking-[0.3em] text-[10px]">Quick Links</h4>
             <ul className="space-y-6 text-xs font-bold uppercase tracking-[0.2em]">
-              <li><a href="#about" className="hover:text-orange-500 transition-colors">About Us</a></li>
-              <li><a href="#results" className="hover:text-orange-500 transition-colors">Testimonials</a></li>
-              <li><a href="#teachers" className="hover:text-orange-500 transition-colors">Our Faculty</a></li>
-              {/* <li><a href="#faq" className="hover:text-orange-500 transition-colors">FAQs</a></li> */}
-              {/* <li><a href="#jobs" className="hover:text-orange-500 transition-colors">Careers</a></li> */}
+              <li><button onClick={() => handleNavClick('/', 'about')} className="hover:text-orange-500 transition-colors">About Us</button></li>
+              <li><button onClick={() => handleNavClick('/', 'teachers')} className="hover:text-orange-500 transition-colors">Our Faculty</button></li>
+              <li><button onClick={() => handleNavClick('/', 'contact')} className="hover:text-orange-500 transition-colors">Contact</button></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-10 uppercase tracking-[0.3em] text-[10px]">Programs</h4>
             <ul className="space-y-6 text-xs font-bold uppercase tracking-[0.2em]">
-              <li><a href="ask" className="hover:text-orange-500 transition-colors">ASK ACADEMY (VII-X)</a></li>
-              <li><a href="ballam" className="hover:text-orange-500 transition-colors">BAALAM PRESCHOOL</a></li>
+              <li><button onClick={() => handleNavClick('/ask')} className="hover:text-orange-500 transition-colors">ASK ACADEMY (VII-X)</button></li>
+              <li><button onClick={() => handleNavClick('/ballam')} className="hover:text-orange-500 transition-colors">BAALAM PRESCHOOL</button></li>
             </ul>
           </div>
 
@@ -82,13 +98,13 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em]">
+        {/* <div className=" border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-[0.3em]">
           <p>© 2026 ASK & BAALAM EDUCATIONAL SOCIETIES. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-12">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

@@ -1,21 +1,33 @@
 
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 import { Menu, X, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
-  onNavigate: (path: string) => void;
-  currentPath: string;
+  onNavigateToSection?: (sectionId: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavigateToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const ENROLL_LINK = "https://forms.gle/C6t5knPJiaoqwKXA7";
 
-  const handleLinkClick = (href: string) => {
-    onNavigate(href);
+  const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
+    
+    // Check if it's a section link (has a #)
+    if (href.startsWith('#') && onNavigateToSection) {
+      onNavigateToSection(href.substring(1));
+    } else if (href === 'home' || href === '/') {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (href === 'ask' || href === '/ask') {
+      navigate('/ask');
+    } else if (href === 'ballam' || href === '/ballam') {
+      navigate('/ballam');
+    }
   };
 
   return (
@@ -23,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
       <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
         <div 
           className="flex items-center gap-4 cursor-pointer group"
-          onClick={() => handleLinkClick('home')}
+          onClick={() => handleNavClick('home')}
         >
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-1 shadow-2xl shadow-orange-500/20 transition-transform group-hover:scale-105">
             <img src="images/ask.jpeg" alt="ASK" className="w-full h-full object-contain" />
@@ -42,15 +54,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
           {NAV_LINKS.map((link) => (
             <button 
               key={link.label} 
-              onClick={() => handleLinkClick(link.href)}
-              className={`text-xs font-bold uppercase tracking-widest transition-all relative py-2 ${
-                currentPath === link.href ? 'text-orange-500' : 'text-slate-400 hover:text-white'
-              }`}
+              onClick={() => handleNavClick(link.href)}
+              className={`text-xs font-bold uppercase tracking-widest transition-all relative py-2 text-slate-400 hover:text-white`}
             >
               {link.label.toUpperCase()}
-              {currentPath === link.href && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 rounded-full" />
-              )}
             </button>
           ))}
           <a 
@@ -76,10 +83,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPath }) => {
           {NAV_LINKS.map((link) => (
             <button 
               key={link.label} 
-              onClick={() => handleLinkClick(link.href)}
-              className={`text-xl font-bold uppercase tracking-widest text-left ${
-                currentPath === link.href ? 'text-orange-500' : 'text-white'
-              }`}
+              onClick={() => handleNavClick(link.href)}
+              className={`text-xl font-bold uppercase tracking-widest text-left text-white`}
             >
               {link.label.toUpperCase()}
             </button>
