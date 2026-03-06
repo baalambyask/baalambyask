@@ -28,26 +28,26 @@ const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="faq" className="w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-slate-950 relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-orange-500/5 to-transparent" />
       
       <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 sm:gap-20 md:gap-24">
           <div className="lg:col-span-1">
-            <span className="text-orange-500 text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Information Desk</span>
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-serif leading-tight mb-8">
+            <span className="text-orange-500 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] mb-4 sm:mb-6 block">Information Desk</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white heading-serif leading-tight mb-6 sm:mb-8">
               Common Inquiries
             </h2>
-            <p className="text-xl text-slate-400 leading-relaxed font-medium mb-10">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-400 leading-relaxed font-medium mb-8 sm:mb-10">
               Find answers to common questions about our programs, pedagogy, and admission process.
             </p>
-            <div className="p-8 bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 shadow-2xl">
-              <HelpCircle className="text-orange-500 mb-6" size={40} />
-              <p className="text-base text-slate-300 font-medium leading-relaxed">Still have questions? Reach out to our registry office directly for personalized guidance.</p>
+            <div className="p-6 sm:p-8 bg-white/5 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl">
+              <HelpCircle className="text-orange-500 mb-4 sm:mb-6 w-8 sm:w-10 h-8 sm:h-10" />
+              <p className="text-xs sm:text-sm md:text-base text-slate-300 font-medium leading-relaxed">Still have questions? Reach out to our registry office directly for personalized guidance.</p>
             </div>
           </div>
 
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {faqs.map((faq, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] overflow-hidden transition-all hover:bg-white/10 shadow-xl">
                 <button 

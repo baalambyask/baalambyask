@@ -81,137 +81,193 @@ const BallamPage = ({ onBack }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-800 overflow-x-hidden pt-24">
+    <div className="w-full min-h-screen bg-white font-sans text-slate-800 overflow-x-hidden pt-14 sm:pt-16 md:pt-20 lg:pt-24">
       {/* TOP ANNOUNCEMENT */}
-      <div className="sticky top-0 z-40 bg-gradient-to-r from-[#0056b3] to-[#0080d4] text-white py-3 px-6 flex justify-between items-center">
-        <div className="text-sm font-semibold">🎓 Admissions Open for 2026-27</div>
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff9500] text-white font-bold text-xs rounded-full">
+      <div className="sticky top-0 z-40 bg-gradient-to-r from-[#0056b3] to-[#0080d4] text-white py-2 sm:py-3 px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div className="text-xs sm:text-sm font-semibold">🎓 Admissions Open for 2026-27</div>
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#ff9500] text-white font-bold text-[10px] sm:text-xs rounded-full flex-shrink-0">
           Limited Seats Available
         </div>
       </div>
 
       <main>
+
         {/* HERO SECTION */}
-        <section className="relative pt-20 pb-20 px-6 overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-20 lg:py-1 px-4 sm:px-6 overflow-hidden">
           <div className="max-w-6xl mx-auto">
             {/* Back Button */}
             <button
               onClick={onBack}
-              className="inline-flex items-center gap-2 text-[#0056b3] hover:text-[#003d85] transition-colors font-bold text-sm mb-8"
+              className="inline-flex items-center gap-2 text-[#0056b3] hover:text-[#003d85] transition-colors font-bold text-xs sm:text-sm mb-6 sm:mb-8"
             >
-              <ChevronLeft size={18} /> Back to Home
+              <ChevronLeft size={16} className="md:w-5 md:h-5" /> Back to Home
             </button>
 
             {/* Logo & Header */}
-            <div className="flex justify-between items-start">
-              <div>
-                <h1 className="text-6xl md:text-7xl font-black text-[#0056b3] leading-tight mb-4">
-                  Prati<span className="text-[#0080d4]">Baalam</span>
+            <div className="flex flex-col lg:flex-row justify-between items-start gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+              <div className="w-full lg:w-auto">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#0056b3] leading-tight mb-3 sm:mb-4">
+                  Baalam Pre School<br></br><span className="text-[#0080d4]"></span>
                 </h1>
-                <p className="text-lg text-slate-600 font-medium max-w-2xl">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-600 font-medium max-w-2xl">
                   Premium preschool education with play-based learning, safety, and holistic development.
                 </p>
               </div>
-              <div className="hidden lg:block text-right">
-                <div className="inline-flex flex-col items-center gap-2 px-6 py-4 bg-[#e1f5fe] border-2 border-[#0056b3] rounded-2xl">
-                  <span className="text-[10px] font-bold text-[#0056b3] uppercase tracking-widest">Admissions Open</span>
-                  <span className="text-2xl font-black text-[#ff9500]">04.03.2026</span>
+              <div className="hidden lg:block text-right flex-shrink-0">
+                <div className="inline-flex flex-col items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-[#e1f5fe] border-2 border-[#0056b3] rounded-2xl">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-[#0056b3] uppercase tracking-widest">Admissions Open</span>
+                  <span className="text-lg sm:text-2xl font-black text-[#ff9500]">04.03.2026</span>
                 </div>
               </div>
             </div>
 
-            {/* CTA Buttons - moved below the header for spacing */}
-            <div className="flex flex-wrap gap-4 my-10">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 my-8 sm:my-10 md:my-12">
               <a
                 href={ENROLL_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#ff9500] text-white font-black rounded-2xl hover:scale-105 transition-transform shadow-lg text-sm uppercase tracking-widest"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#ff9500] text-white font-black rounded-2xl hover:scale-105 transition-transform shadow-lg text-xs sm:text-sm uppercase tracking-widest"
               >
                 Apply Now
               </a>
               <a
                 href="tel:8977224488"
-                className="px-8 py-4 border-3 border-[#0056b3] text-[#0056b3] font-black rounded-2xl hover:bg-[#e1f5fe] transition-colors text-sm uppercase tracking-widest"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-3 border-[#0056b3] text-[#0056b3] font-black rounded-2xl hover:bg-[#e1f5fe] transition-colors text-xs sm:text-sm uppercase tracking-widest"
               >
                 Call Us
               </a>
             </div>
 
+
             {/* Key Stats Banner */}
-            <div className="grid grid-cols-3 gap-4 bg-[#e1f5fe] rounded-3xl p-8">
-              <div className="text-center">
-                <div className="text-3xl font-black text-[#0056b3] mb-2">12:1</div>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Student Ratio</p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 bg-[#e1f5fe] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
+              <div className="text-center min-w-0">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-1 sm:mb-2 break-words">12:1</div>
+                <p className="text-[8px] sm:text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-wider md:tracking-widest">Student<br className="sm:hidden" /> Ratio</p>
               </div>
-              <div className="text-center border-l border-r border-[#0056b3]/20">
-                <div className="text-3xl font-black text-[#0056b3] mb-2">18</div>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Years Trust</p>
+              <div className="text-center border-l border-r border-[#0056b3]/20 min-w-0">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-1 sm:mb-2">18</div>
+                <p className="text-[8px] sm:text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-wider md:tracking-widest">Years<br className="sm:hidden" /> Trust</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-black text-[#0056b3] mb-2">0%</div>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Screen Time</p>
+              <div className="text-center min-w-0">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-1 sm:mb-2">0%</div>
+                <p className="text-[8px] sm:text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-wider md:tracking-widest">Screen<br className="sm:hidden" /> Time</p>
               </div>
             </div>
           </div>
         </section>
-
-        {/* PUZZLE INFOGRAPHIC - 2x2 Grid */}
-        <section className="py-20 px-6 bg-[#e1f5fe]">
-          <div className="max-w-6xl mx-auto">
+        
+        {/* INTERACTIVE PUZZLE SECTION */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-[#0056b3] mb-4">Our Learning Levels</h2>
-              <p className="text-slate-600 font-medium">Each stage is carefully designed for your child's growth</p>
+              <h2 className="text-4xl md:text-5xl font-black text-[#0056b3] mb-4">Our Learning Programs</h2>
+              <p className="text-slate-600 font-medium">Click on each section to explore what we offer for your child</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {/* Interactive Puzzle Image Container */}
+            <div className="relative w-full">
+              {/* Puzzle Image */}
+              <img
+                src="images/puzzle.png"
+                alt="Learning Levels Puzzle"
+                className="w-full h-auto object-cover"
+              />
+
+              {/* Invisible Clickable Zones - Positioned absolutely over the image */}
+              {/* Playgroup - Top Left (25% of width, 50% of height) */}
+              <div
+                onClick={() => setSelectedLevel(0)}
+                className="absolute top-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Playgroup details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Nursery - Top Right */}
+              <div
+                onClick={() => setSelectedLevel(1)}
+                className="absolute top-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Nursery details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Pre-Primary 1 - Bottom Left */}
+              <div
+                onClick={() => setSelectedLevel(2)}
+                className="absolute bottom-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Pre-Primary 1 details"
+                style={{ pointerEvents: 'auto' }}
+              />
+
+              {/* Pre-Primary 2 - Bottom Right */}
+              <div
+                onClick={() => setSelectedLevel(3)}
+                className="absolute bottom-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
+                title="Click to view Pre-Primary 2 details"
+                style={{ pointerEvents: 'auto' }}
+              />
+            </div>
+          </div>
+        </section>
+
+
+        {/*
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-[#e1f5fe]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#0056b3] mb-2 sm:mb-4">Our Learning Levels</h2>
+              <p className="text-xs sm:text-sm md:text-base text-slate-600 font-medium">Each stage is carefully designed for your child's growth</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {schoolLevels.map((level, idx) => (
                 <div
                   key={idx}
-                  className={`${level.bgColor} border-4 ${level.borderColor} rounded-3xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group`}
+                  className={`${level.bgColor} border-3 sm:border-4 ${level.borderColor} rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group`}
                 >
-                  {/* Gradient Background */}
+                  {/* Gradient Background 
                   <div className={`absolute inset-0 bg-gradient-to-br ${level.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
 
                   <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="text-6xl mb-6">{level.icon}</div>
+                    {/* Icon 
+                    <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">{level.icon}</div>
 
-                    {/* Title & Age */}
-                    <h3 className="text-3xl font-black text-[#0056b3] mb-2">{level.name}</h3>
-                    <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">{level.age}</p>
+                    {/* Title & Age 
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#0056b3] mb-1 sm:mb-2">{level.name}</h3>
+                    <p className="text-[8px] sm:text-[9px] md:text-sm font-bold text-slate-500 uppercase tracking-wider md:tracking-widest mb-4 sm:mb-6">{level.age}</p>
 
-                    {/* Description */}
-                    <p className="text-lg font-bold text-slate-700 mb-3">{level.description}</p>
-                    <p className="text-sm text-slate-600 leading-relaxed">{level.focus}</p>
+                    {/* Description 
+                    <p className="text-sm sm:text-base md:text-lg font-bold text-slate-700 mb-2 sm:mb-3">{level.description}</p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{level.focus}</p>
 
-                    {/* Bottom Accent */}
-                    <div className="mt-6 flex items-center gap-2 text-[#0056b3] font-bold text-sm">
-                      <CheckCircle2 size={16} /> Perfect for this age
+                    {/* Bottom Accent 
+                    <div className="mt-4 sm:mt-6 flex items-center gap-2 text-[#0056b3] font-bold text-xs sm:text-sm">
+                      <CheckCircle2 size={16} className="flex-shrink-0" /> Perfect for this age
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </section>  */}
 
         {/* TWO-COLUMN FEATURES */}
-        <section className="py-20 px-6">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
               {/* What's Our Approach? */}
               <div>
-                <h3 className="text-3xl font-black text-[#0056b3] mb-12">What's Our Approach?</h3>
-                <div className="space-y-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-8 sm:mb-12">What's Our Approach?</h3>
+                <div className="space-y-6 sm:space-y-8">
                   {approaches.map((item, idx) => (
-                    <div key={idx} className="flex gap-6">
-                      <div className="w-16 h-16 flex-shrink-0 bg-[#e1f5fe] border-3 border-[#0056b3] rounded-2xl flex items-center justify-center text-[#0056b3]">
-                        {item.icon}
+                    <div key={idx} className="flex gap-4 sm:gap-6">
+                      <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 bg-[#e1f5fe] border-3 border-[#0056b3] rounded-2xl flex items-center justify-center text-[#0056b3]">
+                        {React.cloneElement(item.icon, { size: 24 })}
                       </div>
-                      <div>
-                        <h4 className="text-lg font-black text-slate-900 mb-2">{item.title}</h4>
-                        <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                      <div className="min-w-0">
+                        <h4 className="text-sm sm:text-base md:text-lg font-black text-slate-900 mb-1 sm:mb-2">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{item.description}</p>
                       </div>
                     </div>
                   ))}
@@ -220,16 +276,16 @@ const BallamPage = ({ onBack }) => {
 
               {/* Why PratiBaalam? */}
               <div>
-                <h3 className="text-3xl font-black text-[#0056b3] mb-12">Why PratiBaalam?</h3>
-                <div className="space-y-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-8 sm:mb-12">Why PratiBaalam?</h3>
+                <div className="space-y-6 sm:space-y-8">
                   {whyChoose.map((item, idx) => (
-                    <div key={idx} className="flex gap-6">
-                      <div className="w-16 h-16 flex-shrink-0 bg-[#ffcc00]/20 border-3 border-[#ffcc00] rounded-2xl flex items-center justify-center text-[#0056b3]">
-                        {item.icon}
+                    <div key={idx} className="flex gap-4 sm:gap-6">
+                      <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 bg-[#ffcc00]/20 border-3 border-[#ffcc00] rounded-2xl flex items-center justify-center text-[#0056b3]">
+                        {React.cloneElement(item.icon, { size: 24 })}
                       </div>
-                      <div>
-                        <h4 className="text-lg font-black text-slate-900 mb-2">{item.title}</h4>
-                        <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                      <div className="min-w-0">
+                        <h4 className="text-sm sm:text-base md:text-lg font-black text-slate-900 mb-1 sm:mb-2">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{item.description}</p>
                       </div>
                     </div>
                   ))}
@@ -281,58 +337,6 @@ const BallamPage = ({ onBack }) => {
           </div>
         </section>
 
-        {/* INTERACTIVE PUZZLE SECTION */}
-        <section className="py-20 px-6 bg-white">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-[#0056b3] mb-4">Our Learning Programs</h2>
-              <p className="text-slate-600 font-medium">Click on each section to explore what we offer for your child</p>
-            </div>
-
-            {/* Interactive Puzzle Image Container */}
-            <div className="relative w-full">
-              {/* Puzzle Image */}
-              <img
-                src="images/puzzle.png"
-                alt="Learning Levels Puzzle"
-                className="w-full h-auto object-cover"
-              />
-
-              {/* Invisible Clickable Zones - Positioned absolutely over the image */}
-              {/* Playgroup - Top Left (25% of width, 50% of height) */}
-              <div
-                onClick={() => setSelectedLevel(0)}
-                className="absolute top-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
-                title="Click to view Playgroup details"
-                style={{ pointerEvents: 'auto' }}
-              />
-
-              {/* Nursery - Top Right */}
-              <div
-                onClick={() => setSelectedLevel(1)}
-                className="absolute top-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
-                title="Click to view Nursery details"
-                style={{ pointerEvents: 'auto' }}
-              />
-
-              {/* Pre-Primary 1 - Bottom Left */}
-              <div
-                onClick={() => setSelectedLevel(2)}
-                className="absolute bottom-0 left-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
-                title="Click to view Pre-Primary 1 details"
-                style={{ pointerEvents: 'auto' }}
-              />
-
-              {/* Pre-Primary 2 - Bottom Right */}
-              <div
-                onClick={() => setSelectedLevel(3)}
-                className="absolute bottom-0 right-0 w-1/2 h-1/2 cursor-pointer hover:bg-black/ transition-all duration-300"
-                title="Click to view Pre-Primary 2 details"
-                style={{ pointerEvents: 'auto' }}
-              />
-            </div>
-          </div>
-        </section>
 
         {/* MODAL POPUP */}
         {selectedLevel !== null && (
@@ -468,7 +472,7 @@ const BallamPage = ({ onBack }) => {
                 Apply Now - Limited Seats
               </a>
               <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">
-                📍 Vidyanagar, Hyderabad | 📞 8977224488
+                 Vidyanagar, Hyderabad |  8977224488
               </div>
             </div>
           </div>

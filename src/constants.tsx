@@ -4,7 +4,7 @@ import { Program, NavLink } from './types';
 export const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '#about' },
-  { label: 'Our Faculty', href: '#teachers' },
+  { label: 'Our Team', href: '#teachers' },
   { label: 'Contact', href: '#contact' },
   { label: 'ASK Academy', href: '/ask' },
   { label: 'Baalam Preschool', href: '/ballam' }
