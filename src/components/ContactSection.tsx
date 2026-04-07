@@ -11,7 +11,7 @@ const ContactSection: React.FC = () => {
               Contact Info
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
-              For admissions, academic inquiries, or faculty appointments, please visit our registry office or reach out through the following channels.
+              For admissions, academic inquiries, or faculty appointments, please visit our Registered Office or reach out through the following channels.
             </p>
           </div>
 
@@ -22,10 +22,19 @@ const ContactSection: React.FC = () => {
                 <div className="p-2 sm:p-3 bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <Clock size={20} className="md:w-6 md:h-6 text-orange-600" />
                 </div>
-                <div className="text-base sm:text-lg font-bold text-slate-700 space-y-1">
-                  <p>Mon - Sat: 9:00 AM - 8:00 PM</p>
-                  <p className="text-slate-400 font-medium">Sunday: Closed</p>
-                </div>
+<div className="text-base sm:text-lg font-bold text-slate-700 space-y-2">
+  <p>
+    <span className="text-blue-600">Baalam Playschool</span><br/>
+    Morning: 10 am to 12 noon<br/>
+    Evening: 5:30 pm to 7:30 pm
+  </p>
+
+  <p>
+    <span className="text-orange-600">ASK High School Enquiry</span><br/>
+    Mon to Sat: 5 pm to 8 pm
+  </p>
+
+</div>
               </div>
             </div>
 
@@ -58,14 +67,14 @@ const ContactSection: React.FC = () => {
                   <Phone size={20} className="md:w-6 md:h-6 text-orange-600" />
                 </div>
                 <div className="text-base sm:text-lg font-bold text-slate-700 space-y-1">
-                  <p>ASK - +91 92465 43851</p>
-                  <p>BAALAM - +91 89772 24488</p>
+                  <p>ASK - (+91) 92465 43851 :</p>
+                  <p>BAALAM - (+91) 89772 24488</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-slate-50 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4 sm:space-y-6">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 border-b border-slate-200 pb-2 sm:pb-3">Email Registry</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 border-b border-slate-200 pb-2 sm:pb-3">Email </h4>
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="p-2 sm:p-3 bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <Mail size={20} className="md:w-6 md:h-6 text-orange-600" />

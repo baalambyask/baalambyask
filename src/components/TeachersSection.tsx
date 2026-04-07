@@ -8,35 +8,35 @@ const TeachersSection: React.FC = () => {
       qual: 'M.Sc., M.Ed.',
       specialization: 'Chemistry & ECCE Specialist',
       bio: 'Over 2 decades in IIT foundation coaching. Specialized in Early Childhood Care Education in M.Ed. from University College of Education, Osmania University',
-      image: ''
+      image: '/images/vlp.jpeg'
     },
     {
-      name: 'Dr. K. Santa Deepti',
-      qual: 'Ph.D.  LLB ',
+      name: 'Dr.Santa Deepthi Kuppa',
+      qual: 'Ph.D.  LL.B ',
       specialization: 'Early Childhood Development',
       bio: 'Certified Neurodiversity Counselor.',
-      image: ''
+      image: '/images/sdk.jpeg'
     },
     {
       name: 'Dr. B. Ganesh Kumar',
       qual: 'Ph.D.',
       specialization: 'Physical Discipline & Growth',
       bio: '1st Psychologist for the Indian Men and Women Cricket Teams - Certified Yoga and Cognitive Behaviour Therapist.',
-      image: ''
+      image: '/images/bgk.jpeg'
     },
     {
       name: 'Siva S. Kasturi',
-      qual: 'Ph.D.',
+      qual: 'Ph.D. PGDM (HR & FIN) MBA (Systems) PMP',
       specialization: 'Physical Discipline & Growth',
-      bio: 'Certified PMP, Gifted Mensan and Gold medalist in Finance and HR',
-      image: ''
+      bio: 'Social Scientist & Public Policy Specialist, Management Consultant & Teacher.',
+      image: '/images/ssk.jpeg'
     },
     {
       name: 'Maganti J Muthukumaraswamy',
-      qual: 'Ph.D.',
+      qual: 'M.A.  M.B.A. HR & Tech Management.',
       specialization: 'Physical Discipline & Growth',
-      bio: 'M.A.  M.B.A. HR & Tech Management. Psychometrician and Management Professional with a passion for Water and Waste Management in civic bodies.',
-      image: ''
+      bio: 'Psychometrician and Management Professional with a passion for Water and Waste Management in civic bodies.',
+      image: '/images/mjm.jpeg'
     }
   ];
 
@@ -58,14 +58,23 @@ const TeachersSection: React.FC = () => {
           {teachers.map((teacher, idx) => (
             <div key={idx} className="group bg-white rounded-2xl sm:rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)]">
               
+              {/* IMAGE */}
+              <div className="w-full h-100 overflow-hidden rounded-xl mb-4">
+                <img
+                  src={teacher.image}
+                  alt={teacher.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               <div className="space-y-3 sm:space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 heading-serif">{teacher.name}</h3>
                 
-                <p className="text-orange-600 font-bold text-[13px] sm:text-[15px] uppercase tracking-[0.15em] sm:tracking-[0.2em]">
+                <p className="text-orange-600 font-bold text-[13px] sm:text-[15px] tracking-[0.15em] sm:tracking-[0.2em]">
                   {/* {teacher.role} */}
                 </p>
 
-                <div className="flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-widest">
+                <div className="flex items-center gap-3 text-slate-400 text-xs font-bold tracking-widest">
                   <div className="bg-white rounded-lg shadow-sm">
                   </div>
                   <span>{teacher.qual}</span>

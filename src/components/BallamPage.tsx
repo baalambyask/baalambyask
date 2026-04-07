@@ -63,21 +63,22 @@ const BallamPage = ({ onBack }) => {
   ];
 
   const approaches = [
+    { icon: <Heart size={28} />, title: "Screen-Free Zone", description: "No to TVs or Mobile Screens - No to Digital addiction" },
     { icon: <Play size={28} />, title: "Play-Based Learning", description: "Every concept taught through games and activities" },
-    { icon: <CheckCircle2 size={28} />, title: "NEP 2020 Aligned", description: "Follows National Education Policy framework" },
+    { icon: <CheckCircle2 size={28} />, title: "NEP 2020 Aligned", description: "Promotes values, creative thinking & citizenship" },
     { icon: <Music size={28} />, title: "Holistic Development", description: "Balance of academics, arts, and physical education" },
-    { icon: <Heart size={28} />, title: "Screen-Free Zone", description: "100% no TV, tablets, or screens in classrooms" },
-    { icon: <Users size={28} />, title: "12:1 Student Ratio", description: "Every child gets personalized attention daily" },
-    { icon: <Zap size={28} />, title: "Expert Teachers", description: "Certified in child psychology & early childhood education" }
+    { icon: <Zap size={28} />, title: "Trained Teachers & Support Staff", description: "Certified teachers in ECCE - Trained Staff" },
+    { icon: <Users size={28} />, title: "Mother Teacher : Student Ratio  1:12", description: "The best among schools in Hyderabad for individual attention" },
   ];
 
   const whyChoose = [
-    { icon: <Camera size={28} />, title: "CCTV Transparency", description: "Real-time monitoring. Parents can access live feeds." },
-    { icon: <ShieldCheck size={28} />, title: "Safety Protocols", description: "Medical-grade sanitization and hygiene standards." },
-    { icon: <Wind size={28} />, title: "Clean Environment", description: "Air purifiers and mosquito mesh in all rooms." },
+    { icon: <CheckCircle2 size={28} />, title: "Curriculum NCF 2023 aligned with NEP 2020", description: "Holistic development for 21st century skills" },
+    { icon: <Heart size={28} />, title: "Parent Involvement", description: "Whatsapp Reporting - Parent teacher meets / workshops every quarter." },
     { icon: <Award size={28} />, title: "Proven Track Record", description: "18 years of trusted education in Vidyanagar." },
-    { icon: <Heart size={28} />, title: "Parent Involvement", description: "Weekly progress reports and parent-teacher meetings." },
-    { icon: <CheckCircle2 size={28} />, title: "Certified Curriculum", description: "Montessori & International Best Practices." }
+    { icon: <ShieldCheck size={28} />, title: "Safety Protocols", description: "Medical-grade sanitization and hygiene standards." },
+    { icon: <Wind size={28} />, title: "Clean Environment", description: "Mosquito mesh in all classes, Purified air & water facility." },
+    { icon: <Camera size={28} />, title: "CCTV Transparency", description: "Real-Time monitoring of all classes and play areas 24x7." }
+
   ];
 
   return (
@@ -109,8 +110,11 @@ const BallamPage = ({ onBack }) => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#0056b3] leading-tight mb-3 sm:mb-4">
                   Baalam Pre School<br></br><span className="text-[#0080d4]"></span>
                 </h1>
+                <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#0056b] leading-tight mb-3 sm:mb-4">
+                  Playgroup, Nursery, PP1 & PP2<br></br><span className="text-[#0080d4]"></span>
+                </h2>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-600 font-medium max-w-2xl">
-                  Premium preschool education with play-based learning, safety, and holistic development.
+                  Premium preschool education with play-based learning, safety, and holistic development. Our motto is "Nurturing the inner strength in every child".
                 </p>
               </div>
               <div className="hidden lg:block text-right flex-shrink-0">
@@ -157,7 +161,7 @@ const BallamPage = ({ onBack }) => {
             </div>
           </div>
         </section>
-        
+
         {/* INTERACTIVE PUZZLE SECTION */}
         <section className="py-20 px-6 bg-white">
           <div className="max-w-xl mx-auto">
@@ -276,7 +280,7 @@ const BallamPage = ({ onBack }) => {
 
               {/* Why PratiBaalam? */}
               <div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-8 sm:mb-12">Why PratiBaalam?</h3>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0056b3] mb-8 sm:mb-12">Why Baalam?</h3>
                 <div className="space-y-6 sm:space-y-8">
                   {whyChoose.map((item, idx) => (
                     <div key={idx} className="flex gap-4 sm:gap-6">
@@ -304,8 +308,8 @@ const BallamPage = ({ onBack }) => {
                 <li className="flex gap-4">
                   <Camera size={32} className="flex-shrink-0 text-[#ffcc00]" />
                   <div>
-                    <p className="font-bold text-lg mb-1">Live CCTV Access</p>
-                    <p className="text-blue-100 text-sm">Monitor your child anytime via our secure parent portal</p>
+                    <p className="font-bold text-lg mb-1">Parents Whatsapp Community and Class wise group support</p>
+                    {/* <p className="text-blue-100 text-sm">Monitor your child anytime via our secure parent portal</p> */}
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -330,9 +334,6 @@ const BallamPage = ({ onBack }) => {
               <p className="text-blue-100 text-sm leading-relaxed mb-8">
                 Our curriculum combines Montessori principles with modern educational research, ensuring your child thrives socially, emotionally, and academically.
               </p>
-              <button className="w-full bg-[#ffcc00] text-[#0056b3] py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">
-                Learn Our Method
-              </button>
             </div>
           </div>
         </section>
@@ -460,7 +461,7 @@ const BallamPage = ({ onBack }) => {
           <div className="max-w-3xl mx-auto bg-[#e1f5fe] rounded-3xl p-12 text-center border-4 border-[#0056b3]">
             <h2 className="text-4xl font-black text-[#0056b3] mb-4">Ready to Transform Your Child's Early Years?</h2>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-              Join PratiBaalam and give your child the gift of play-based, science-backed education in a safe, nurturing environment.
+              Join Baalam and give your child the gift of play-based, science-backed education in a safe, nurturing environment.
             </p>
             <div className="flex flex-col gap-4">
               <a
@@ -472,7 +473,7 @@ const BallamPage = ({ onBack }) => {
                 Apply Now - Limited Seats
               </a>
               <div className="text-sm font-bold text-slate-600 uppercase tracking-widest">
-                 Vidyanagar, Hyderabad |  8977224488
+                Vidyanagar, Hyderabad |  8977224488
               </div>
             </div>
           </div>

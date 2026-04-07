@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateToSection }) => {
             rel="noopener noreferrer"
             className="px-6 lg:px-8 py-2 lg:py-3 bg-orange-600 text-white text-[9px] lg:text-[10px] font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] rounded-full hover:bg-orange-500 transition-all flex items-center gap-2 shadow-lg shadow-orange-600/20 flex-shrink-0"
           >
-            ADMISSIONS OPENED
+            ADMISSIONS OPEN
           </a>
         </div>
 

@@ -13,11 +13,11 @@ const TestimonialsSection: React.FC = () => {
       author: "Former Student",
       school: "Now at IIT Madras"
     },
-    {
-      text: "Baalam is a wonderful place for early education. The teachers are caring and the curriculum is perfectly balanced.",
-      author: "Parent of Nursery Student",
-      school: "Baalam Academy"
-    }
+    // {
+    //   text: "Baalam is a wonderful place for early education. The teachers are caring and the curriculum is perfectly balanced.",
+    //   author: "Parent of Nursery Student",
+    //   school: "Baalam Academy"
+    // }
   ];
 
   return (

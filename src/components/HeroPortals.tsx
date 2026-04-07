@@ -76,7 +76,7 @@ const HeroPortals: React.FC = () => {
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white heading-serif tracking-tight whitespace-nowrap">
               BAALAM PRE SCHOOL
             </h2>
-            <p className="text-blue-500 text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.3em] sm:tracking-[0.35em] md:tracking-[0.4em] uppercase">Foundational Excellence</p>
+            <p className="text-green-500 text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.3em] sm:tracking-[0.35em] md:tracking-[0.4em] uppercase">Foundational Excellence</p>
 
             <a
               href={BAALAM_ENROLL_LINK}
